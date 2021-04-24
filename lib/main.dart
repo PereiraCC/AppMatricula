@@ -1,50 +1,41 @@
 import 'package:flutter/material.dart';
 
-void main() {
+import 'package:matricula/src/bloc/provider.dart';
+import 'package:matricula/src/pages/home_page.dart';
+import 'package:matricula/src/pages/login_page.dart';
+
+
+void main() async{
+
+  //WidgetsFlutterBinding.ensureInitialized();
+  //final prefs = new PreferenciasUsuario();
+  //await prefs.initPrefs();
+
   runApp(MyApp());
-}
 
+}
+ 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Universidad ABC',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    
+    //final prefs = new PreferenciasUsuario();
+    //print(prefs.token);
+    
+    return  Provider(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Material App',
+        initialRoute: 'login',
+        routes: {
+          'login'     : (BuildContext context) => LoginPage(),
+          'home'      : (BuildContext context) => HomePage(),
+        }, 
+        theme: ThemeData(
+          primaryColor: Colors.deepPurple
+        ),
       ),
-      home: MyHomePage(title: 'Universidad ABC'),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text(widget.title)
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    
   }
 }
