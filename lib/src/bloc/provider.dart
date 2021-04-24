@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:matricula/src/bloc/login_bloc.dart';
 
+import 'carreras_bloc.dart';
+
 
 class Provider extends InheritedWidget{
 
   final loginBloc = new LoginBloc();
+  final carreraBloc =  new CarrerasBloc();
 
   static Provider _instancia;
 
@@ -26,6 +29,10 @@ class Provider extends InheritedWidget{
 
   static LoginBloc of( BuildContext context ){
     return context.dependOnInheritedWidgetOfExactType<Provider>().loginBloc;
+  }
+
+  static CarrerasBloc carrerasbloc ( BuildContext context ){
+    return context.dependOnInheritedWidgetOfExactType<Provider>().carreraBloc;
   }
 
 

@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:matricula/src/widgets/botones_home.dart';
+import 'package:matricula/src/widgets/fondo_app.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -7,29 +9,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Universidad ABC'),
-        centerTitle: true,
-      ),
-      body: Container(
-        child: ListView(
-          children: <Widget>[
-            
-            ListTile(
-              title: Text('Matricular'),
-              leading: Icon(Icons.book, color: Colors.blue),
-              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
-            ),
+      body: Stack(
+        children: <Widget>[
+          FondoApp(),
 
-            ListTile(
-              title: Text('Registrar Asistencia'),
-              leading: Icon(Icons.book_rounded, color: Colors.blue),
-              trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
-            ),
-
-          ], 
-        ),
+          BotonesHome(),
+        ],
       ),
+
+      //bottomNavigationBar: _bottomNavigationBar(context),
     );
   }
 }
