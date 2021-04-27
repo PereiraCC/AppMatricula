@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:matricula/src/bloc/provider.dart';
 import 'package:matricula/src/pages/carreras_page.dart';
+import 'package:matricula/src/pages/cursos_page.dart';
+import 'package:matricula/src/pages/grupos_page.dart';
 import 'package:matricula/src/pages/home_page.dart';
 import 'package:matricula/src/pages/login_page.dart';
 
@@ -31,7 +33,9 @@ class MyApp extends StatelessWidget {
         routes: {
           'login'     : (BuildContext context) => LoginPage(),
           'home'      : (BuildContext context) => HomePage(),
-          'carreras'  : (BuildContext context) => CarrerasPage()
+          'carreras'  : (BuildContext context) => CarrerasPage(),
+          'cursos'  : (BuildContext context) => CursosPage(),
+          'grupos'  : (BuildContext context) => GruposPage(),
         }, 
         theme: ThemeData(
           primaryColor: Colors.deepPurple

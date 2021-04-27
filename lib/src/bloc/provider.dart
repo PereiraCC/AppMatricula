@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:matricula/src/bloc/cursos_bloc.dart';
 import 'package:matricula/src/bloc/login_bloc.dart';
 
 import 'carreras_bloc.dart';
+import 'grupos_bloc.dart';
 
 
 class Provider extends InheritedWidget{
 
   final loginBloc = new LoginBloc();
   final carreraBloc =  new CarrerasBloc();
+  final cursosBloc =  new CursosBloc();
+  final gruposBloc = new GruposBloc();
 
   static Provider _instancia;
 
@@ -35,6 +39,13 @@ class Provider extends InheritedWidget{
     return context.dependOnInheritedWidgetOfExactType<Provider>().carreraBloc;
   }
 
+  static CursosBloc cursosbloc ( BuildContext context ){
+    return context.dependOnInheritedWidgetOfExactType<Provider>().cursosBloc;
+  }
+
+  static GruposBloc gruposbloc ( BuildContext context ){
+    return context.dependOnInheritedWidgetOfExactType<Provider>().gruposBloc;
+  }
 
 
 }

@@ -1,29 +1,34 @@
+
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:matricula/src/Models/model_carreras.dart';
-import 'package:matricula/src/bloc/carreras_bloc.dart';
+import 'package:matricula/src/Models/model_cursos.dart';
+import 'package:matricula/src/Models/model_grupos.dart';
 import 'package:matricula/src/bloc/provider.dart';
 
-class BotonesCarreras extends StatelessWidget {
+class BotonesGrupos extends StatelessWidget {
 
+  final CursosModel curso;
+
+  const BotonesGrupos({this.curso});
   
   @override
   Widget build(BuildContext context) {
 
-    final carrerasBloc = Provider.carrerasbloc(context);
-    carrerasBloc.cargarCarreras();
+    final gruposBloc = Provider.gruposbloc(context);
+    gruposBloc.cargarGrupos(curso.nombre);
 
     return StreamBuilder(
-        stream: carrerasBloc.carrerasStream,
-        builder: (BuildContext context, AsyncSnapshot<List<CarrerasModel>> snapshot) {
+        stream: gruposBloc.carrerasStream,
+        builder: (BuildContext context, AsyncSnapshot<List<GruposModel>> snapshot) {
           if ( snapshot.hasData ){
 
-            final carreras = snapshot.data;
+            final grupos = snapshot.data;
 
             return ListView.builder(
-                itemCount: carreras.length,
-                itemBuilder: (context, i) => _crearBotoneRedondeado(context, Colors.blue, Icons.cast_for_education, carreras[i]),
+                itemCount: grupos.length,
+                itemBuilder: (context, i) => _crearBotoneRedondeado(context, Colors.blue, Icons.filter_frames_rounded, grupos[i]),
             );
              
 
@@ -35,7 +40,7 @@ class BotonesCarreras extends StatelessWidget {
 
   }
 
-  Widget _crearBotoneRedondeado(BuildContext context, Color color, IconData icono, CarrerasModel carrera){
+  Widget _crearBotoneRedondeado(BuildContext context, Color color, IconData icono, GruposModel carrera){
 
     return ClipRRect(
       child: BackdropFilter(
@@ -59,10 +64,10 @@ class BotonesCarreras extends StatelessWidget {
                 ),
                 color: Color.fromRGBO(62, 66, 107, 0.7),
                 onPressed: () {
-                  Navigator.pushNamed(context, 'cursos', arguments: carrera);
+                  Navigator.pushNamed(context, 'home');
                 },
               ),
-              Text(carrera.nombre, style: TextStyle(color: Colors.white)),
+              Text(carrera.numero, style: TextStyle(color: Colors.white)),
               SizedBox(height: 5.0),
             ],
           ),
@@ -72,3 +77,4 @@ class BotonesCarreras extends StatelessWidget {
   }
 
 }
+

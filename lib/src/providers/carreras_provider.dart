@@ -8,7 +8,7 @@ class CarrerasProvider {
 
   Future<List<CarrerasModel>> getCarreras() async{
 
-    var  url = Uri.parse('http://10.0.0.6/WebApiMatricula/api/Carreras');
+    var  url = Uri.parse('http://10.0.0.7/WebApiMatricula/api/Carreras');
 
     final resp = await http.get(url);
 
